@@ -4,17 +4,21 @@ import speech_recognition as sr
 import pyttsx3
 from intencao import classificar_intencao
 import plugins.hora
-
+import plugins.piada
 
 plugin_map = {
     "hora": plugins.hora,
+    "piada": plugins.piada,
 }
 
-# Fala e escuta
 r = sr.Recognizer()
 engine = pyttsx3.init()
 
 with sr.Microphone() as source:
+
+    engine.say("Olá Pablo, estou ouvindo...")
+    engine.runAndWait()
+
     print("Fale algo:")
     audio = r.listen(source)
     texto = r.recognize_google(audio, language='pt-BR')

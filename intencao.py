@@ -1,6 +1,5 @@
 import spacy
 
-# Carregar o modelo de língua portuguesa
 nlp = spacy.load("pt_core_news_sm")
 
 def classificar_intencao(frase):
@@ -14,5 +13,8 @@ def classificar_intencao(frase):
     
     if any(token.lemma_ in ["clima", "tempo", "chuva", "sol"] for token in doc):
         return "clima"
+    
+    if any(token.lemma_ in ["piada", "graçinha", "graça", "charada"] for token in doc):
+        return "piada"
 
     return "desconhecido"
